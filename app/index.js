@@ -71,7 +71,7 @@ input_parser(input_file.name)
 
     // All cookies received
     .on('end', function(){
-      steplog('Crawler Complete');
+      console.log('\n--- Crawler Complete ---');
       process.stdin.pause();
     });
 

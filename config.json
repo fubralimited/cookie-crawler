@@ -2,7 +2,7 @@
   "debug": false,
   "output_file": "cookies.csv",
   "input_file": {
-    "name": "sites_list.txt",
+    "name": "sites.txt",
     "type": "txt"
   }
 }
