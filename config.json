@@ -1,0 +1,8 @@
+{
+  "debug": false,
+  "output_file": "cookies.csv",
+  "input_file": {
+    "name": "sites_list.txt",
+    "type": "txt"
+  }
+}
