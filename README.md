@@ -16,6 +16,11 @@ Node CLI utility for retrieving cookie information from multiple sites.
     - This may take a while to complete as each url is loaded with all it's assets.
 6. If everything worked the results will be available in `cookies.csv` (or whatever name was set in config).
 
+![Screenshot](screen-terminal.png)
+
+**Example results**
+![Screenshot](screen-result.png)
+
 ###TODO:
   - Add support for more input types.
   - Tests
