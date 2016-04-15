@@ -3,7 +3,7 @@
 const fs = require('fs');
 const readline = require('readline');
 const {mUrl} = require('../util');
-
+const urlParse = require('url').parse;
 
 /**
  * Handles a plain text input file of urls
@@ -28,7 +28,10 @@ module.exports = function(file) {
       // Push each line (site url) to url_list
       .on('line', function(line) {
         let url = mUrl(line);
-        console.log(` ${url}`);
+        let hostname = urlParse(url).hostname;
+        let path = urlParse(url).path;
+
+        console.log(` ${hostname+path}`);
         url_list.push(url);
       })
 

@@ -4,6 +4,7 @@ const moment = require('moment');
 const {steplog} = require('./lib/util');
 const crawler = require('./lib/crawler');
 const output = require('./lib/output');
+const urlParse = require('url').parse;
 
 // Get required config vars
 const {input_file, output_file} = require('../config.json');
@@ -38,8 +39,6 @@ input_parser(input_file.name)
     const csv = output.create(output_file);
 
     // Steps
-    steplog('Successfully parsed input file');
-
     steplog('Passing urls to crawler');
     console.log('Please be patient. This may take a while...\n');
 
@@ -49,8 +48,11 @@ input_parser(input_file.name)
     // Cookies sent
     .on('cookies', function(url, cookies){
 
+      let hostname = urlParse(url).hostname;
+      let path = urlParse(url).path;
+
       // Log number of cookies found
-      console.log(` ${cookies.length} cookies found for: ${url}`);
+      console.log(` ${cookies.length} cookies found for: ${hostname+path}`);
 
       // Write cookies to file
       if (cookies.length) {
@@ -60,7 +62,8 @@ input_parser(input_file.name)
           let expiry = cookie.expiry ? moment.unix(cookie.expiry).fromNow(true) : '';
 
           csv.write({
-            'Site': url,
+            'Site': hostname,
+            'Path': cookie.path,
             'Name': cookie.name,
             'Value': cookie.value,
             'Expires': expiry

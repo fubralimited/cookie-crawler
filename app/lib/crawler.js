@@ -52,7 +52,7 @@ const _fetchCookiesDevCache = function(url, callback) {
           callback(cookies);
         });
       }
-    }, 4000);
+    }, 1000);
   });
 }
 
