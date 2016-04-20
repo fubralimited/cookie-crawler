@@ -124,7 +124,7 @@ module.exports = function(url_list) {
     if(url_list.length) {
 
       // Start a console spinner
-      let spin = spinner();
+      let spin = spinner({cleanup: false});
 
       // Start popping urls off the url_list
       let url = url_list.shift();
